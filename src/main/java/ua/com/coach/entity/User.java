@@ -26,17 +26,8 @@ public class User {
      * Values of roles of a {@link User}.
      */
     public enum Role {
-
-        /**
-         * The role of an administration.
-         */
         ADMIN,
-
-        /**
-         * The role of a User.
-         */
         USER
-
     }
 
     @Id
