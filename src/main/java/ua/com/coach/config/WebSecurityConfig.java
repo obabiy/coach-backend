@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .jdbcAuthentication()
             .dataSource(appConfig.dataSource())
             .passwordEncoder(passwordEncoder())
-            .usersByUsernameQuery("select email, password"
+            .usersByUsernameQuery("select email, password, active"
                     + "from User "
                     + "where email = ?")
             .authoritiesByUsernameQuery("select email, role "

@@ -30,6 +30,8 @@ public class User {
         USER
     }
 
+    private Boolean active;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 //    @Setter(value = AccessLevel.NONE)

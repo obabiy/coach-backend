@@ -28,7 +28,7 @@ import javax.validation.Valid;
 @Controller
 public class RegistrationController {
 
-    private final UserService userService;
+       private final UserService userService;
 
 //    private final PasswordEncoder passwordEncoder; // +++++++++++++++++
 

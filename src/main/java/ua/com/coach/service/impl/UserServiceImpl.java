@@ -4,8 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ua.com.coach.dao.UserDao;
+import ua.com.coach.dto.UserDto;
 import ua.com.coach.entity.User;
 import ua.com.coach.service.UserService;
 
@@ -21,12 +23,20 @@ public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
 
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Long create(final User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        return userDao.save(user);
+//  UserDto build = UserDto.builder().email().username().build();
+        User regUser = user;
+        regUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        regUser.setActive(true);
+        regUser.setRole(User.Role.USER);
+
+//        User buildUser = User.builder().password(passwordEncoder.encode(user.getPassword())).active(true).role(User.Role.USER).build();
+//        return UserDao.save(buildUser);
+
+        return userDao.save(regUser);
     }
 
     @Override
