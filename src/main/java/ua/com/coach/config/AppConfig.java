@@ -27,7 +27,7 @@ public class AppConfig {
     private String url;
 
     @Value("${jdbc.username}")
-    private String user;
+    private String username;
 
     @Value("${jdbc.password}")
     private String password;
@@ -55,7 +55,7 @@ public class AppConfig {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(driver);
         dataSource.setUrl(url);
-        dataSource.setUsername(user);
+        dataSource.setUsername(username);
         dataSource.setPassword(password);
 
         return dataSource;
@@ -71,7 +71,7 @@ public class AppConfig {
         hibernateProperties.setProperty("hibernate.dialect", dialect);
         hibernateProperties.setProperty("hibernate.show_sql", showSql);
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", hbm2ddlAuto);
-//        hibernateProperties.setProperty("hibernate.auto_quote_keyword", quoteKeyword);
+        hibernateProperties.setProperty("hibernate.auto_quote_keyword", quoteKeyword);
 
         return hibernateProperties;
     }

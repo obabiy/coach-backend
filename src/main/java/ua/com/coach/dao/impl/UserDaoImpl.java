@@ -30,7 +30,7 @@ public class UserDaoImpl implements UserDao {
 
     @Transactional(readOnly = true)
     @Override
-    public User findById(final Integer id) {
+    public User findById(final Long id) {
         return sessionFactory.getCurrentSession().get(User.class, id);
     }
 
@@ -58,7 +58,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean delete(final Integer id) {
+    public boolean delete(final Long id) {
         sessionFactory.getCurrentSession().delete(findById(id));
 
         return true;

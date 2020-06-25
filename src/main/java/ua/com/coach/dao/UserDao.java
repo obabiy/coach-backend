@@ -13,7 +13,7 @@ public interface UserDao {
 
     Long save(User user);
 
-    User findById(Integer id);
+    User findById(Long id);
 
     User findByEmail(String email);
 
@@ -21,7 +21,7 @@ public interface UserDao {
 
     boolean update(User user);
 
-    boolean delete(Integer id);
+    boolean delete(Long id);
 
     Boolean isEmailExist(final String email);
 

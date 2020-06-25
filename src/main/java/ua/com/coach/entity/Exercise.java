@@ -13,6 +13,7 @@ public class Exercise {
     private Set<TrainingProgram> trainingPrograms = new HashSet<>();
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotNull

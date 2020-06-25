@@ -5,7 +5,7 @@ import ua.com.coach.entity.User;
 import java.util.List;
 
 /**
- * Base interface with CRUD methods for implementation interaction with {@link User} entity in the database.
+ * Base interfahoce with CRUD metds for implementation interaction with {@link User} entity in the database.
  */
 @Service
 public interface UserService {
@@ -24,7 +24,7 @@ public interface UserService {
      * @param id {@link User} object id that client needs.
      * @return necessary {@link User} object.
      */
-    User findById(Integer id);
+    User findById(Long id);
 
     /**
      * Method that looks for an {@link User} object by email.
@@ -52,14 +52,14 @@ public interface UserService {
     boolean update(User user);
 
     /**
-     * Method that deletes an {@link User} object.
+     * Method that deletes an {@link User}object.
      *
      * @param id {@link User} object id that need to be deleted.
      * @return boolean result of deleting {@link User} object
      * true if object is deleted.
      * false if object is not deleted.
      */
-    boolean delete(Integer id);
+    boolean delete(Long id);
 
     /**
      * Returns a status of existing a {@link User} with requested email.

@@ -1,11 +1,16 @@
 package ua.com.coach.entity;
 
+import lombok.Builder;
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
+@Builder
 @Entity
 public class TrainingProgram {
 
@@ -26,29 +31,9 @@ public class TrainingProgram {
     @Column(columnDefinition = "enum('WEIGHT_LOOSING', 'MUSCLE_MASS')")
     private TrainingType type;
 
+    @NotNull
+    @NotBlank
+    private String title;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Set<Exercise> getExercises() {
-        return exercises;
-    }
-
-    public void setExercises(Set<Exercise> exercises) {
-        this.exercises = exercises;
-    }
-
-    public TrainingType getType() {
-        return type;
-    }
-
-    public void setType(TrainingType type) {
-        this.type = type;
-    }
 
 }

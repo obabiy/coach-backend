@@ -1,9 +1,6 @@
 package ua.com.coach.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -11,20 +8,13 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- * User entity.
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-//@Table(name = "t_user")
 @Entity
 public class User {
 
-    /**
-     * Values of roles of a {@link User}.
-     */
     public enum Role {
         ADMIN,
         USER
@@ -34,7 +24,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Setter(value = AccessLevel.NONE)
+    @Setter(value = AccessLevel.NONE)
     private Long id;
 
     @NotNull
