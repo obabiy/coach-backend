@@ -6,10 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
 public class BodyMeasurements {
+
+    public enum Gender{
+        Man,
+        Woman
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,10 +23,16 @@ public class BodyMeasurements {
 
     //Basic param
     @NotNull
-    private int height;
+    private int weight;
+
 
     // Advanced params
-    private int weight;
+
+    @NotNull
+    private Gender gender;
+
+    @NotNull
+    private int height;
 
     private int waist;  //обхват талії
 

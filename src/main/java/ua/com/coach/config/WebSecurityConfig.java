@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ua.com.coach.entity.User;
@@ -45,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
             .jdbcAuthentication()
             .dataSource(appConfig.dataSource())
-            .passwordEncoder(passwordEncoder())
+//            .passwordEncoder(passwordEncoder())
             .usersByUsernameQuery("select email, password, active"
                     + "from User "
                     + "where email = ?")
@@ -59,19 +60,52 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        httpSecurity.cors();
 
         httpSecurity
+
+//                .authorizeRequests()
+//                .anyRequest().authenticated()
+//                .and()
+//                .httpBasic();
+
+
+//                .csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/log").fullyAuthenticated()
+//                .and().httpBasic();
+
+
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/registration").permitAll()
-                .antMatchers("/authentication").permitAll()
                 .anyRequest().authenticated()
-
+                                                                                  //+
                 .and()
-                .formLogin()
-                .loginProcessingUrl("/login")
-                .permitAll()
+                .httpBasic()
 
                 .and()
                 .logout().permitAll();
+
+
+
+//                .csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/").permitAll()
+//                .antMatchers("/registration").permitAll()
+//                .antMatchers("/user/balance").hasAnyAuthority(CUSTOMER_ROLE, CUSTOMER_ADMIN_ROLE)
+//                .antMatchers("/menu/*").permitAll()
+//                .antMatchers("/menu/**").hasAuthority(PROVIDER_ROLE)
+//                .antMatchers("/dish/**").hasAuthority(PROVIDER_ROLE)
+//                .antMatchers("/order/**").authenticated()
+//                .antMatchers("/order/provider/**").hasAuthority(PROVIDER_ROLE)
+//                .anyRequest().hasAuthority(ADMIN_ROLE)
+//                .and()
+//                .logout()
+//                .permitAll()
+//
+//                .and()
+//                .httpBasic()
+//
+//                .and()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
     /**

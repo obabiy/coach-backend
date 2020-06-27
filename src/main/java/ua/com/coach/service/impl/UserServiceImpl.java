@@ -24,12 +24,13 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao;
 
     private final PasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public Long create(final User user) {
 //  UserDto build = UserDto.builder().email().username().build();
         User regUser = user;
-        regUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        regUser.setPassword(user.getPassword());
         regUser.setActive(true);
         regUser.setRole(User.Role.USER);
 
